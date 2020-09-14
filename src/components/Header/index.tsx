@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 
 import { Container } from './styles';
 import logo from '../../assets/logo.png';
-import { Link } from 'react-router-dom';
 
 const Header: React.FC = () => {
+  const history = useHistory();
+
+  const handleRegister = useCallback(() => {
+    history.push('/register');
+  }, [history]);
+
+  const handleLogin = useCallback(() => {
+    history.push('/login');
+  }, [history]);
+
   return (
     <Container>
       <div>
@@ -13,8 +23,12 @@ const Header: React.FC = () => {
         </Link>
 
         <div>
-          <button className="register">REGISTER</button>
-          <button className="login">LOGIN</button>
+          <button onClick={handleRegister} className="register">
+            REGISTER
+          </button>
+          <button onClick={handleLogin} className="login">
+            LOGIN
+          </button>
         </div>
       </div>
     </Container>

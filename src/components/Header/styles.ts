@@ -23,6 +23,12 @@ export const Container = styled.header`
     img {
       height: 3rem;
       width: 3rem;
+      opacity: 1;
+      transition: opacity 0.2s;
+
+      &:hover {
+        opacity: 0.8;
+      }
     }
 
     div {
@@ -36,14 +42,15 @@ export const Container = styled.header`
         background: ${colors.secondary};
         border: 0.05rem solid ${colors.primary};
         border-radius: 0.5rem;
-        margin-right: 1.6rem;
+        margin-right: 0.8rem;
         font-size: 1.4rem;
         font-weight: 400;
-        transition: transform 0.2s;
+        opacity: 1;
+        transition: all 0.2s;
 
         &:hover {
           transform: translateY(-0.3rem);
-          border-color: ${colors.primary};
+          opacity: 0.8;
         }
       }
 
@@ -56,10 +63,12 @@ export const Container = styled.header`
         color: ${colors.secondary};
         font-size: 1.4rem;
         font-weight: 400;
-        transition: transform 0.2s;
+        opacity: 1;
+        transition: all 0.2s;
 
         &:hover {
           transform: translateY(-0.3rem);
+          opacity: 0.8;
         }
       }
     }
