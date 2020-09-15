@@ -70,7 +70,7 @@ const Register: React.FC = () => {
           icon={FiLock}
         />
 
-        <button>Register</button>
+        <button type="submit">Register</button>
       </Form>
     </Container>
   );
