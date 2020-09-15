@@ -1,10 +1,13 @@
-import React, { useCallback, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useCallback, useRef, useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 import { FiMail, FiLock } from 'react-icons/fi';
 import * as Yup from 'yup';
+import Loader from 'react-loader-spinner';
+import { toast } from 'react-toastify';
 
+import { useAuth } from '../../hooks/auth';
 import getValidationErrors from '../../utils/getValidationErrors';
 import Input from '../../components/Input';
 import cyan from '../../assets/cyan.svg';
@@ -16,30 +19,56 @@ interface FormData {
 }
 
 const Login: React.FC = () => {
+  const { Login } = useAuth();
+  const history = useHistory();
+  const [loading, setLoading] = useState(false);
+
   const formRef = useRef<FormHandles>(null);
 
-  const handleSubmit = useCallback(async (data: FormData) => {
-    try {
-      formRef.current?.setErrors({});
+  const handleSubmit = useCallback(
+    async (data: FormData) => {
+      try {
+        setLoading(true);
+        formRef.current?.setErrors({});
 
-      const schema = Yup.object().shape({
-        email: Yup.string().email().required('Email is required'),
-        password: Yup.string().required('Password is required'),
-      });
+        const schema = Yup.object().shape({
+          email: Yup.string().email().required('Email is required'),
+          password: Yup.string().required('Password is required'),
+        });
 
-      await schema.validate(data, {
-        abortEarly: false,
-      });
-    } catch (err) {
-      if (err instanceof Yup.ValidationError) {
-        const errors = getValidationErrors(err);
+        await schema.validate(data, {
+          abortEarly: false,
+        });
 
-        formRef.current?.setErrors(errors);
+        await Login({
+          email: data.email,
+          password: data.password,
+        });
 
-        return;
+        setLoading(false);
+
+        history.push('/');
+      } catch (err) {
+        if (err instanceof Yup.ValidationError) {
+          const errors = getValidationErrors(err);
+
+          formRef.current?.setErrors(errors);
+
+          setLoading(false);
+
+          return;
+        }
+
+        setLoading(false);
+        toast.configure();
+
+        toast.error('Something went wrong, check your credentials', {
+          position: toast.POSITION.TOP_RIGHT,
+        });
       }
-    }
-  }, []);
+    },
+    [Login, history],
+  );
 
   return (
     <Container>
@@ -55,7 +84,13 @@ const Login: React.FC = () => {
         />
 
         <Link to="/">Forgot your password?</Link>
-        <button type="submit">Login</button>
+        <button disabled={loading} type="submit">
+          {loading ? (
+            <Loader type="TailSpin" color="#fff" height={24} width={24} />
+          ) : (
+            'Login'
+          )}
+        </button>
       </Form>
     </Container>
   );

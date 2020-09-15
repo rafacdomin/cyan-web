@@ -43,6 +43,9 @@ export const AuthProvider: React.FC = ({ children }) => {
   const Logout = useCallback(() => {
     setUser(null);
     api.defaults.headers.Authorization = '';
+
+    sessionStorage.removeItem('@Cyan:user');
+    sessionStorage.removeItem('@Cyan:token');
   }, []);
 
   return (

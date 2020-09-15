@@ -1,10 +1,12 @@
 import React, { useCallback } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
-import { Container } from './styles';
+import { useAuth } from '../../hooks/auth';
 import logo from '../../assets/logo.png';
+import { Container } from './styles';
 
 const Header: React.FC = () => {
+  const { user, Logout } = useAuth();
   const history = useHistory();
 
   const handleRegister = useCallback(() => {
@@ -15,6 +17,10 @@ const Header: React.FC = () => {
     history.push('/login');
   }, [history]);
 
+  const handleLogout = useCallback(() => {
+    Logout();
+  }, [Logout]);
+
   return (
     <Container>
       <div>
@@ -22,14 +28,22 @@ const Header: React.FC = () => {
           <img src={logo} alt="cyan" />
         </Link>
 
-        <div>
-          <button onClick={handleRegister} className="register">
-            REGISTER
-          </button>
-          <button onClick={handleLogin} className="login">
-            LOGIN
-          </button>
-        </div>
+        {!user ? (
+          <div>
+            <button onClick={handleRegister} className="register">
+              REGISTER
+            </button>
+            <button onClick={handleLogin} className="login">
+              LOGIN
+            </button>
+          </div>
+        ) : (
+          <div>
+            <button onClick={handleLogout} className="login">
+              LOGOUT
+            </button>
+          </div>
+        )}
       </div>
     </Container>
   );
