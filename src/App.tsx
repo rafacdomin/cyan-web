@@ -1,6 +1,7 @@
 import React from 'react';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
+import 'leaflet/dist/leaflet.css';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 import GlobalStyle from './styles/global';

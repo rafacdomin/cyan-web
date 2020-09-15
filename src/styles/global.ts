@@ -12,6 +12,11 @@ export default createGlobalStyle`
     font-size: 60%;
   }
 
+  .leaflet-container{
+    width: 100%;
+    height: 100vh;
+  }
+
   body {
     background: #FFFFFF;
     -webkit-font-smoothing: antialiased;

@@ -35,6 +35,7 @@ export const Container = styled.div<ContainerProps>`
     background: transparent;
     border: 0;
     color: ${colors.dark};
+    font-size: 1.4rem;
     &::placeholder {
       color: ${colors.grey};
     }

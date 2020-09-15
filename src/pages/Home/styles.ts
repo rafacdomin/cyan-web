@@ -5,6 +5,7 @@ import Select from '../../components/Select';
 
 export const Container = styled.main`
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 
@@ -29,6 +30,7 @@ export const Container = styled.main`
       border: none;
       color: ${colors.secondary};
       transition: background-color 0.2s;
+      font-size: 1.4rem;
 
       &:hover {
         background-color: ${shade(0.08, colors.primary)};
@@ -49,6 +51,8 @@ export const Container = styled.main`
 
 export const SelectComponent = styled(Select)`
   margin-right: 0.8rem;
+  font-size: 1.4rem;
+
   .react-select__control {
     height: 4.8rem;
     min-height: 4.8rem;
