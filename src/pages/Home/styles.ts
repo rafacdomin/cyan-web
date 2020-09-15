@@ -8,14 +8,19 @@ export const Container = styled.main`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
+  margin-bottom: 10rem;
 
   form {
+    position: absolute;
+    z-index: 100;
+    top: 0;
     flex: 1;
     display: flex;
     align-items: center;
     max-width: 110rem;
     padding: 0 1.6rem;
-    margin: 3.6rem 0 2.4rem;
+    margin-top: 3.6rem;
 
     svg {
       margin-right: 1.6rem;
@@ -43,6 +48,7 @@ export const Container = styled.main`
       align-items: center;
       justify-content: center;
       border: 0.05rem solid #ccc;
+      background: ${colors.secondary};
       border-radius: 0.5rem;
       height: 4.8rem;
     }
@@ -57,5 +63,40 @@ export const SelectComponent = styled(Select)`
     height: 4.8rem;
     min-height: 4.8rem;
     width: 16.5rem;
+  }
+`;
+
+export const NewField = styled.div`
+  overflow: hidden;
+  position: absolute;
+  z-index: 100;
+  bottom: -65px;
+
+  height: 4.8rem;
+  width: 25rem;
+  background: none;
+
+  button {
+    color: ${colors.secondary};
+    background: ${colors.primary};
+    border-radius: 0 1rem 0 0;
+    border: 0;
+
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transform: translateY(3.3rem);
+    transition: transform 0.2s;
+
+    &:hover {
+      transform: translateY(0);
+    }
+    svg {
+      margin-right: 1.6rem;
+    }
   }
 `;

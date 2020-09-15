@@ -4,6 +4,7 @@ import 'react-dates/lib/css/_datepicker.css';
 import 'leaflet/dist/leaflet.css';
 import { BrowserRouter as Router } from 'react-router-dom';
 
+import AppProvider from './hooks';
 import GlobalStyle from './styles/global';
 import Routes from './routes';
 
@@ -12,7 +13,9 @@ function App() {
     <>
       <GlobalStyle />
       <Router>
-        <Routes />
+        <AppProvider>
+          <Routes />
+        </AppProvider>
       </Router>
     </>
   );

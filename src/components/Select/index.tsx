@@ -31,9 +31,10 @@ const AsyncSelect: React.FC<Props> = ({ name, ...rest }) => {
   return (
     <Select
       cacheOptions
+      className="react-select-container"
+      classNamePrefix="react-select"
       defaultValue={defaultValue}
       ref={selectRef}
-      classNamePrefix="react-select"
       {...rest}
     />
   );

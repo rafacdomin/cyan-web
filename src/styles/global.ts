@@ -14,7 +14,8 @@ export default createGlobalStyle`
 
   .leaflet-container{
     width: 100%;
-    height: 100vh;
+    height: 85vh;
+    z-index: 1;
   }
 
   body {
