@@ -29,7 +29,6 @@ const Register: React.FC = () => {
   const handleSubmit = useCallback(
     async (data: FormData) => {
       try {
-        toast.configure();
         setLoading(true);
         formRef.current?.setErrors({});
 

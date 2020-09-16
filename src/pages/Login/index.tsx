@@ -60,7 +60,6 @@ const Login: React.FC = () => {
         }
 
         setLoading(false);
-        toast.configure();
 
         toast.error('Something went wrong, check your credentials', {
           position: toast.POSITION.TOP_RIGHT,

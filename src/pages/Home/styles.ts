@@ -9,7 +9,7 @@ export const Container = styled.main`
   align-items: center;
   justify-content: center;
   position: relative;
-  margin-bottom: 10rem;
+  margin-bottom: 7rem;
 
   form {
     position: absolute;
@@ -20,7 +20,7 @@ export const Container = styled.main`
     align-items: center;
     max-width: 110rem;
     padding: 0 1.6rem;
-    margin-top: 3.6rem;
+    margin-top: 1.6rem;
 
     svg {
       margin-right: 1.6rem;
@@ -70,7 +70,7 @@ export const NewField = styled.div`
   overflow: hidden;
   position: absolute;
   z-index: 100;
-  bottom: -65px;
+  top: 100%;
 
   height: 4.8rem;
   width: 25rem;

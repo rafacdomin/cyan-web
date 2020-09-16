@@ -71,6 +71,35 @@ export const Container = styled.header`
           opacity: 0.8;
         }
       }
+
+      .registerField {
+        margin-right: 2.4rem;
+        padding-right: 2.4rem;
+        border: none;
+        border-right: 0.05rem solid ${colors.primary};
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 1;
+        transition: opacity 0.2s;
+
+        color: ${colors.primary};
+        background: ${colors.primary};
+
+        background: none;
+
+        font-size: 14px;
+
+        &:hover {
+          opacity: 0.6;
+        }
+
+        svg {
+          margin-right: 0.8rem;
+          margin-bottom: 0.2rem;
+        }
+      }
     }
   }
 `;

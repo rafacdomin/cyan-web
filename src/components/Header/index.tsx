@@ -1,5 +1,7 @@
 import React, { useCallback } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import { FiPlusCircle } from 'react-icons/fi';
+import { toast } from 'react-toastify';
 
 import { useAuth } from '../../hooks/auth';
 import logo from '../../assets/logo.png';
@@ -21,6 +23,20 @@ const Header: React.FC = () => {
     Logout();
   }, [Logout]);
 
+  const handleRegisterField = useCallback(() => {
+    if (!user) {
+      history.push('/login');
+
+      toast.warn('You must login to add a new Field to the map', {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+
+      return;
+    }
+
+    history.push('/register-filter');
+  }, [user, history]);
+
   return (
     <Container>
       <div>
@@ -28,22 +44,32 @@ const Header: React.FC = () => {
           <img src={logo} alt="cyan" />
         </Link>
 
-        {!user ? (
-          <div>
-            <button onClick={handleRegister} className="register">
-              REGISTER
-            </button>
-            <button onClick={handleLogin} className="login">
-              LOGIN
-            </button>
-          </div>
-        ) : (
-          <div>
-            <button onClick={handleLogout} className="login">
+        <div>
+          <button
+            type="button"
+            onClick={handleRegisterField}
+            className="registerField">
+            <FiPlusCircle size={18} color="#4787CD" />
+            ADD NEW FIELD
+          </button>
+          {!user ? (
+            <>
+              <button
+                type="button"
+                onClick={handleRegister}
+                className="register">
+                REGISTER
+              </button>
+              <button type="button" onClick={handleLogin} className="login">
+                LOGIN
+              </button>
+            </>
+          ) : (
+            <button type="button" onClick={handleLogout} className="login">
               LOGOUT
             </button>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </Container>
   );
