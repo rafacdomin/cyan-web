@@ -1,7 +1,8 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { FiFilter } from 'react-icons/fi';
 import { Form } from '@unform/web';
 
+import api from '../../services/api';
 import Input from './components/Input';
 import Notifications from '../../components/Notifications';
 import MapComponent from '../../components/Map';
@@ -15,6 +16,14 @@ const myOptions = [
 ];
 
 const Home: React.FC = () => {
+  const [fields, setFields] = useState([]);
+
+  useEffect(() => {
+    api.get('/map/fields').then(({ data }) => {
+      setFields(data);
+    });
+  }, []);
+
   const options = useCallback(
     async () => [
       { value: 'chocolate', label: 'Chocolate' },
@@ -52,7 +61,7 @@ const Home: React.FC = () => {
       <div className="map">
         <Notifications />
 
-        <MapComponent />
+        <MapComponent markers={fields} />
       </div>
     </>
   );
