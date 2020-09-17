@@ -2,6 +2,10 @@ import styled from 'styled-components';
 import colors from '../../styles/colors';
 import { shade } from 'polished';
 
+interface SendButtonProps {
+  disabled: boolean;
+}
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -32,11 +36,11 @@ export const Container = styled.div`
     border: 0.05rem solid ${colors.primary};
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 
-    span {
+    > span {
       padding-top: 1.2rem;
 
       font-size: 2.4rem;
-      color: ${colors.dark};
+      color: #c53030;
     }
 
     > div {
@@ -68,6 +72,11 @@ export const Container = styled.div`
       border-radius: 0.5rem;
       color: ${colors.secondary};
       transition: background-color 0.2s;
+
+      &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
 
       &:hover {
         background: ${shade(0.08, colors.primary)};
@@ -111,6 +120,7 @@ export const Content = styled.div`
 
   p {
     font-size: 12px;
+    font-weight: normal;
     color: ${colors.dark};
     margin: 0;
   }

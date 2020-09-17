@@ -23,10 +23,9 @@ import farmIcon from '../../assets/hill.svg';
 import { Container, Content, Pop } from './styles';
 
 interface FormData {
-  name: string;
-  email: string;
-  password: string;
-  passwordConfirm: string;
+  mill: string;
+  farm: string;
+  harvest?: string;
 }
 
 interface MarkerProp {
@@ -156,33 +155,47 @@ const NewField: React.FC = () => {
         formRef.current?.setErrors({});
 
         const schema = Yup.object().shape({
-          name: Yup.string()
-            .min(3, 'Name must be at least 3 characters')
-            .required('Name is required'),
-          email: Yup.string().email().required('Email is required'),
-          password: Yup.string()
-            .min(6, 'Password must be at least 6 characters')
-            .required('Password is required'),
-          passwordConfirm: Yup.string()
-            .oneOf([Yup.ref('password')], 'Passwords must match')
-            .required('Passwords must match'),
+          mill: Yup.string().required('Mill name or code is required'),
+          farm: Yup.string().required('Farm name or code is required'),
+          harvest: Yup.string(),
+        });
+
+        const geometrySchema = Yup.object().shape({
+          lat: Yup.number().required(),
+          lng: Yup.number().required(),
+        });
+
+        const dateSchema = Yup.object().shape({
+          start_date: Yup.date().required(),
+          end_date: Yup.date().required(),
         });
 
         await schema.validate(data, {
           abortEarly: false,
         });
 
-        await api.post('/users', {
-          name: data.name,
-          email: data.email,
-          password: data.password,
+        await geometrySchema.validate(newField, { abortEarly: false });
+
+        await dateSchema.validate(
+          { start_date: dateStart, end_date: dateEnd },
+          { abortEarly: false },
+        );
+
+        await api.post('/map/fields', {
+          latitude: newField?.lat,
+          longitude: newField?.lng,
+          farm: data.farm,
+          harvest: data.harvest,
+          start_date: dateStart,
+          end_date: dateEnd,
+          mill: data.mill,
         });
 
-        toast.success('Registration successful. Please login', {
+        toast.success('Field added successful', {
           position: toast.POSITION.TOP_RIGHT,
         });
         setLoading(false);
-        history.push('/login');
+        history.push('/');
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
@@ -194,12 +207,12 @@ const NewField: React.FC = () => {
         }
         setLoading(false);
 
-        toast.error('Something went wrong, check your credentials', {
+        toast.error('Server error, something went wrong', {
           position: toast.POSITION.TOP_RIGHT,
         });
       }
     },
-    [history],
+    [history, dateEnd, dateStart, newField],
   );
 
   return (
@@ -289,7 +302,7 @@ const NewField: React.FC = () => {
           </fieldset>
         </div>
 
-        <button type="submit">
+        <button disabled={!(dateStart && dateEnd && newField)} type="submit">
           {loading ? (
             <Loader type="TailSpin" color="#fff" height={24} width={24} />
           ) : (
