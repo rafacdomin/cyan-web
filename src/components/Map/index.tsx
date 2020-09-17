@@ -58,7 +58,7 @@ const MapComponent: React.FC<MapProps> = ({ markers }) => {
   }, []);
 
   return (
-    <Map center={[latitude, longitude]} zoom={4}>
+    <Map center={[latitude, longitude]} zoom={2}>
       <TileLayer
         attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
