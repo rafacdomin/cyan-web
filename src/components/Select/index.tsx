@@ -26,6 +26,9 @@ const AsyncSelect: React.FC<Props> = ({ name, ...rest }) => {
         }
         return ref.select.state.value.value;
       },
+      clearValue: (ref: any) => {
+        ref.select.state.value = null;
+      },
     });
   }, [fieldName, registerField, rest.isMulti]);
   return (
