@@ -7,7 +7,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 6rem 0;
+  padding: 1rem 0;
 
   form {
     margin-top: 3.2rem;

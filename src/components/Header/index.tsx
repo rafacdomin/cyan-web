@@ -21,7 +21,8 @@ const Header: React.FC = () => {
 
   const handleLogout = useCallback(() => {
     Logout();
-  }, [Logout]);
+    history.push('/');
+  }, [Logout, history]);
 
   const handleRegisterField = useCallback(() => {
     if (!user) {
@@ -34,7 +35,7 @@ const Header: React.FC = () => {
       return;
     }
 
-    history.push('/register-filter');
+    history.push('/new-field');
   }, [user, history]);
 
   return (

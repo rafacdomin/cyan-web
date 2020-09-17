@@ -9,29 +9,29 @@ import MapComponent from '../../components/Map';
 import DatePicker from '../../components/DatePicker';
 import { Container, SelectComponent } from './styles';
 
-const myOptions = [
-  { value: 'chocolate', label: 'Chocolate' },
-  { value: 'strawberry', label: 'Strawberry' },
-  { value: 'vanilla', label: 'Vanilla' },
-];
+interface Mill {
+  id: string;
+  name: string;
+}
 
 const Home: React.FC = () => {
   const [fields, setFields] = useState([]);
+  const [options, setOptions] = useState([]);
 
   useEffect(() => {
     api.get('/map/fields').then(({ data }) => {
       setFields(data);
     });
-  }, []);
 
-  const options = useCallback(
-    async () => [
-      { value: 'chocolate', label: 'Chocolate' },
-      { value: 'strawberry', label: 'Strawberry' },
-      { value: 'vanilla', label: 'Vanilla' },
-    ],
-    [],
-  );
+    api.get('map/mills').then(({ data }) => {
+      const mills = data.map((mill: Mill) => ({
+        value: mill.id,
+        label: mill.name,
+      }));
+
+      setOptions(mills);
+    });
+  }, []);
 
   const applyFilter = useCallback(async (data: any) => {
     console.log(data);
@@ -45,8 +45,7 @@ const Home: React.FC = () => {
           <SelectComponent
             name="millName"
             placeholder="Select a Mill"
-            loadOptions={options}
-            defaultOptions={myOptions}
+            defaultOptions={options}
           />
           <DatePicker />
 

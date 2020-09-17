@@ -60,7 +60,6 @@ const DatePicker: React.FC = () => {
         onDatesChange={({ startDate, endDate }) => {
           setStartDate(startDate);
           setEndDate(endDate);
-          console.log(startDate, endDate);
         }} // PropTypes.func.isRequired,
         focusedInput={inputfocus} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
         onFocusChange={focusedInput => {

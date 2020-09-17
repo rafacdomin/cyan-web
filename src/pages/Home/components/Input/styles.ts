@@ -21,6 +21,7 @@ export const Container = styled.div<ContainerProps>`
     props.isFocused &&
     css`
       border-color: ${colors.primary};
+      border-width: 0.2rem;
       color: ${colors.primary};
     `}
 
