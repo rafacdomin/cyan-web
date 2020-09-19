@@ -82,7 +82,7 @@ const Login: React.FC = () => {
           icon={FiLock}
         />
 
-        <Link to="/">Forgot your password?</Link>
+        <Link to="/login">Forgot your password?</Link>
         <button disabled={loading} type="submit">
           {loading ? (
             <Loader type="TailSpin" color="#fff" height={24} width={24} />
