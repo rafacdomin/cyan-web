@@ -3,6 +3,10 @@ import styled from 'styled-components';
 import colors from '../../styles/colors';
 import Select from '../../components/Select';
 
+interface NotificationProps {
+  unread?: boolean;
+}
+
 export const Container = styled.main`
   display: flex;
   flex-direction: column;
@@ -47,7 +51,7 @@ export const Container = styled.main`
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 0.05rem solid #ccc;
+      border: 0.5px solid #ccc;
       background: ${colors.secondary};
       border-radius: 0.5rem;
       height: 4.8rem;
@@ -97,6 +101,39 @@ export const NewField = styled.div`
     }
     svg {
       margin-right: 1.6rem;
+    }
+  }
+`;
+
+export const Notification = styled.section<NotificationProps>`
+  color: ${colors.black};
+  display: flex;
+  flex-direction: column;
+
+  & + section {
+    margin-top: 1.6rem;
+    padding-top: 1.6rem;
+    border-top: 1px solid ${colors.primaryLighten};
+  }
+
+  p {
+    max-width: 80%;
+    font-size: 1.6rem;
+  }
+
+  button {
+    align-self: flex-end;
+    margin-top: 1.6rem;
+    display: flex;
+    align-items: center;
+
+    font-size: 1.2rem;
+    border: 0;
+    background: none;
+    color: ${colors.primaryLighten};
+
+    svg {
+      margin-left: 0.4rem;
     }
   }
 `;

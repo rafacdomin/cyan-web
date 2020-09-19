@@ -10,13 +10,13 @@ export const Container = styled.header`
   > div {
     display: flex;
     flex: 1;
-    padding: 0 16px;
+    padding: 0 1.6rem;
     max-width: 36rem;
 
     align-items: center;
     justify-content: space-between;
 
-    @media (min-width: 600px) {
+    @media (min-width: 60rem) {
       max-width: 110rem;
     }
 
@@ -40,7 +40,7 @@ export const Container = styled.header`
         width: 14.4rem;
         height: 3.6rem;
         background: ${colors.secondary};
-        border: 0.05rem solid ${colors.primary};
+        border: 0.5px solid ${colors.primary};
         border-radius: 0.5rem;
         margin-right: 0.8rem;
         font-size: 1.4rem;
@@ -76,7 +76,7 @@ export const Container = styled.header`
         margin-right: 2.4rem;
         padding-right: 2.4rem;
         border: none;
-        border-right: 0.05rem solid ${colors.primary};
+        border-right: 0.5px solid ${colors.primary};
 
         display: flex;
         justify-content: center;
@@ -89,7 +89,7 @@ export const Container = styled.header`
 
         background: none;
 
-        font-size: 14px;
+        font-size: 1.4rem;
 
         &:hover {
           opacity: 0.6;

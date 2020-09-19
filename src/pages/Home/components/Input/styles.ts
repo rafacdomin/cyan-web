@@ -13,7 +13,7 @@ export const Container = styled.div<ContainerProps>`
   padding: 1.6rem;
   width: 16rem;
   height: 4.8rem;
-  border: 0.05rem solid #ccc;
+  border: 0.5px solid #ccc;
   display: flex;
   align-items: center;
 

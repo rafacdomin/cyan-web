@@ -20,7 +20,7 @@ export const Container = styled.div`
     justify-content: center;
 
     border-radius: 0.4rem;
-    border: 0.05rem solid ${colors.primary};
+    border: 0.5px solid ${colors.primary};
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 
     a {

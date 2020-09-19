@@ -13,7 +13,7 @@ export const Container = styled.div<ContainerProps>`
   border-radius: 0.5rem;
   padding: 1.6rem;
   width: 30rem;
-  border: 0.05rem solid ${colors.grey};
+  border: 0.5px solid ${colors.grey};
   display: flex;
   align-items: center;
 

@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState, useCallback } from 'react';
 import api from '../services/api';
 
 interface AuthContextData {
-  user: object | null;
+  user: { id: string } | null;
   Login(userData: Request): Promise<void>;
   Logout(): void;
 }
@@ -15,7 +15,7 @@ interface Request {
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 export const AuthProvider: React.FC = ({ children }) => {
-  const [user, setUser] = useState<object | null>(() => {
+  const [user, setUser] = useState<{ id: string } | null>(() => {
     const storagedUser = sessionStorage.getItem('@Cyan:user');
     const storagedToken = sessionStorage.getItem('@Cyan:token');
 

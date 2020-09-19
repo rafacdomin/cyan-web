@@ -16,17 +16,17 @@ export const Content = styled.div`
   margin-left: 1.6rem;
 
   h1 {
-    font-size: 24px;
+    font-size: 2.4rem;
     color: ${colors.dark};
   }
 
   h2 {
-    font-size: 16px;
+    font-size: 1.6rem;
     color: ${colors.dark};
   }
 
   h3 {
-    font-size: 16px;
+    font-size: 1.6rem;
     color: ${colors.dark};
     margin-top: 0.4rem;
     margin-bottom: 0.8rem;
@@ -35,7 +35,7 @@ export const Content = styled.div`
   }
 
   p {
-    font-size: 12px;
+    font-size: 1.2rem;
     font-weight: normal;
     color: ${colors.dark};
     margin: 0;

@@ -33,7 +33,7 @@ export const Container = styled.div`
     justify-content: center;
 
     border-radius: 2rem 2rem 0 0;
-    border: 0.05rem solid ${colors.primary};
+    border: 0.5px solid ${colors.primary};
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 
     > span {
@@ -57,7 +57,7 @@ export const Container = styled.div`
           display: flex;
           align-items: center;
           height: 5.3rem;
-          border: 0.05rem solid ${colors.grey};
+          border: 0.5px solid ${colors.grey};
           border-radius: 0.5rem;
           margin-bottom: 1.6rem;
         }
@@ -100,17 +100,17 @@ export const Content = styled.div`
   margin-left: 1.6rem;
 
   h1 {
-    font-size: 24px;
+    font-size: 2.4rem;
     color: ${colors.dark};
   }
 
   h2 {
-    font-size: 16px;
+    font-size: 1.6rem;
     color: ${colors.dark};
   }
 
   h3 {
-    font-size: 16px;
+    font-size: 1.6rem;
     color: ${colors.dark};
     margin-top: 0.4rem;
     margin-bottom: 0.8rem;
@@ -119,7 +119,7 @@ export const Content = styled.div`
   }
 
   p {
-    font-size: 12px;
+    font-size: 1.2rem;
     font-weight: normal;
     color: ${colors.dark};
     margin: 0;
