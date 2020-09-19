@@ -7,6 +7,7 @@ import api from '../../services/api';
 import { useAuth } from '../../hooks/auth';
 import farmIcon from '../../assets/hill.svg';
 import { Container, Content } from './styles';
+import formatDate from '../../utils/formatDate';
 
 interface MarkerProp {
   id: string;
@@ -82,8 +83,8 @@ const MapComponent: React.FC<MapProps> = ({ markers, lat, lng, zoom }) => {
                   Harvest: <p>{marker.farm.harvest.id}</p>
                 </h2>
                 <div>
-                  <p>Start: 07/10/2019 </p>
-                  <p>End: 07/10/2020 </p>
+                  <p>Start: {formatDate(marker.farm.harvest.start_date)} </p>
+                  <p>End: {formatDate(marker.farm.harvest.end_date)} </p>
                 </div>
                 <h3>
                   Farm: {marker.farm.name}
