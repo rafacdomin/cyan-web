@@ -191,7 +191,7 @@ const NewField: React.FC = () => {
           mill: data.mill,
         });
 
-        toast.success('Field added successful', {
+        toast.success('Field added successfully', {
           position: toast.POSITION.TOP_RIGHT,
         });
         setLoading(false);
