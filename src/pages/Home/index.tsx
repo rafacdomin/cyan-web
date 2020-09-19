@@ -154,6 +154,7 @@ const Home: React.FC = () => {
           />
           <div className="date-picker">
             <DateRangePicker
+              showClearDates
               small
               noBorder
               hideKeyboardShortcutsPanel
